@@ -1,4 +1,4 @@
-# Bitcoin Cash Node Flipstarter campaign static backup
+# BCHD Flipstarter campaign static backup
 
 ## Run the development server
 
