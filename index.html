@@ -1,0 +1,1420 @@
+<!doctype html>
+<html lang="en"><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Preload assets -->
+  <link rel="preload" href="js/application.js" as="script">
+  <link rel="preload" href="img/logo.png" as="image">
+  <link rel="preload" href="img/clouds.png" as="image">
+  <link rel="preload" href="img/grass.png" as="image">
+  <link rel="preload" href="img/water.png" as="image">
+  <link rel="preload" href="fonts/cairo.woff2" as="font" crossorigin="">
+  <link rel="preload" href="fonts/icons.woff" as="font" crossorigin="">
+
+  <!-- preload fonts -->
+  <style>
+    /** Fonts **/
+    @font-face
+    {
+      font-display: swap;
+      font-family: 'Cairo';
+      font-style: normal;
+      font-weight: 400;
+      src: local('Cairo'), local('Cairo-Regular'), url('fonts/cairo.woff2') format('woff2');
+      unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    }
+
+    @font-face
+    {
+      font-display: swap;
+      font-family: 'icons';
+      font-weight: normal;
+      font-style: normal;
+      font-display: block;
+      src: url('fonts/icons.woff') format('woff');
+    }
+  </style>
+
+  <!-- -->
+  <link rel="icon" href="img/logo.png">
+
+  <link href="css/materialize.min.css" type="text/css" rel="stylesheet">
+  <link href="css/style.css" type="text/css" rel="stylesheet">
+
+  <!-- Website metadata -->
+  <title>BCHD, Flipstarter</title>
+  <meta property="og:title" content="Flipstarter: BCHD">
+  <meta property="og:description" content="BCHD flipstarter fundraising campaign">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bchd.cash/">
+  <meta property="og:image" content="https://bchd.flipstarter.cash/img/bchd-logo.png">
+  <meta property="og:image:alt" content="BCHD logo image.">
+  <meta property="og:article:section" content="Technology">
+  <meta property="og:article:tag" content="Bitcoin">
+  <meta property="og:article:tag" content="Bitcoin Cash">
+  <meta property="og:article:tag" content="BCHD">
+  <meta property="og:article:tag" content="BCH">
+  <meta property="og:article:tag" content="Cryptocurrencies">
+  <meta property="og:article:tag" content="Fundraising">
+  <meta property="og:article:tag" content="Infrastructure">
+</head>
+<body class="clouds">
+  <div class="grass">
+    <div class="background">
+
+      <!-- Site header -->
+      <header id="header" class="container row center">
+        <h1 class="cols s12 m12 l12">
+          <img src="img/logo.png" alt="Flipstarter logotype">
+          <span>Flipstarter</span>
+        </h1>
+        <p class="col s12 m12 l12" data-string="siteIntro">Funding of Bitcoin Cash infrastructure is important, and infrastructure diversity creates a resilient ecosystem. Flipstarter provides a way for any project to engage with potential funders in a way that encourages accountability for projects and fairness for funders.</p>
+        <ul class="col s10 m10 l10 push-s1 push-m1 push-l1" style="display: flex; justify-content: center; text-align: left;">
+          <li class="col">
+            <a class="valign-wrapper" target="_blank" href="https://read.cash/@flipstarter/introducing-flipstarter-31ce86f3">
+              <i class="icon-info"></i>
+              &nbsp;
+              <span data-string="linkWhatIs">What is Flipstarter?</span>
+            </a>
+          </li>
+          <li class="col">
+            <a class="valign-wrapper" target="_blank" href="https://read.cash/@flipstarter/how-to-support-a-flipstarter-campaign-f27240d9">
+              <i class="icon-info"></i>
+              &nbsp;
+              <span data-string="linkHowTo">How to use Flipstarter?</span>
+            </a>
+          </li>
+          <li class="col">
+            <a class="valign-wrapper" target="_blank" href="https://read.cash/@flipstarter/flipstarter-faq-66c56b03">
+              <i class="icon-info"></i>
+              &nbsp;
+              <span data-string="linkFAQ">Common questions.</span>
+            </a>
+          </li>
+        </ul>
+      </header>
+
+      <!-- Site content -->
+      <main class="container row z-depth-2">
+
+        <!-- Campaign -->
+        <article id="campaign" class="col s12 m12 l8" style="margin-bottom: 0.75rem;">
+          <h1 style="display: none;">Campaign</h1>
+
+          <!-- Campaign overview -->
+          <section id="overview">
+            <h2 style="display: none;">Campaign overview</h2>
+            <div style="float: left;">
+              <span class="valign-wrapper" style="float: left;">
+                <i class="icon-access_time"></i>
+                <span id="timerLabel" data-string="fullfilledLabel">Funded</span>
+                <b id="campaignExpiration">2 months ago</b>
+              </span>
+            </div>
+            <div style="float: right;">
+              <span class="valign-wrapper" style="float: left;">
+                <i class="icon-bookmark_border"></i>
+                <span id="compaignContributionAmount">360.00</span>
+                <i>/</i>
+                <span id="campaignRequestAmount">360.00</span>
+                <b>BCH</b>
+              </span>
+            </div>
+            <div class="progress">
+              <div class="determinate" id="campaignProgressBar" style="width: 100%;"></div>
+              <div class="determinate" id="campaignContributionBar" style="left: 100%; width: 0.16%;"></div>
+            </div>
+          </section>
+
+          <!-- Campaign heading -->
+          <header id="campaignAbstract"><p>BCHD is a full node and blockchain server written in Go. It serves several purposes in the ecosystem. First it provides a very hackable codebase for Go developers (of which there are a lot out there). It offers a number of packages that can be imported by other projects. For example OpenBazaar uses a number of libs from BCHD. It is arguably the easiest full node codebase to read and understand making it an excellent entry point for beginner blockchain developers. It is the only node which supports bips 157/158 (client side filtering) and the only one capable of supporting neutrino-style p2p SPV wallets with strong privacy. And finally it’s arguably the best blockchain server, not just of any Bitcoin Cash node, but of any coin out there. The gRPC interface is very modern, fast, and extremely well designed.</p>
+            <p>The immediate goals of this project is to first and foremost support application development as a high performance blockchain server. This will include adding an SLP index to support the burgeoning token sector. Secondly we want BCHD to become a fully capable mining node to help support mining diversity in Bitcoin Cash.</p>
+            <p>To this end we are raising funds to cover the next six months of operating expenses.</p>
+          </header>
+
+          <!-- Campaign donation form -->
+          <fieldset id="donateField" class="row fullfilled">
+            <div id="donateStatus" class="col s12 m12 l12" style="text-align: center;" data-string="statusFullfilled">The campaign has been funded.<div id="sharingActions" style="font-size: 1rem; opacity: 0.66;"><a id="shareAction" data-string="shareAction"><i class="icon-share"></i>Share!</a><a id="celebrateAction" data-string="celebrateAction"><i class="icon-nightlife"></i>Celebrate!</a><a id="fullfillmentLink" target="_blank" href="https://blockchair.com/bitcoin-cash/transaction/7e1df3c75598f0fbf6fc5d5df79c3f2cfb673da67a0ff4bfc4449d321ffadbeb"><i class="icon-label"></i>7e1df3c75598f0fbf6fc5d5df79c3f2cfb673da67a0ff4bfc4449d321ffadbeb</a></div></div>
+
+            <div id="donateForm" class="col s12 m12 l12 hidden">
+              <div class="input-field col s1 m1 l1" style="padding: 0;">
+                <i style="display: inline-block; width: 3rem; height: 3rem; text-align: center; opacity: 0.50; font-size: 2.25rem; line-height: 3.25rem;" class="icon-attach_money"></i>
+              </div>
+              <div class="input-field col s11 m5 l6" style="padding: 0; text-align: center;">
+                <input type="range" min="0.80" max="100" value="0" step="0.20" class="slider" id="donationSlider" style="height: 3rem; padding: 0; width: calc(100% - 2rem); margin: 0rem;">
+              </div>
+              <div class="input-field col s12 m6 l5" style="padding: 0 0.75rem; margin: 0.75rem 0rem;">
+                <button id="donateButton" class="btn waves-effect waves-light green" style="width: 100%; padding: 0; margin: 0rem;" disabled="">
+                  <span id="donateText" data-string="donateText">Pledge</span>
+                  <span id="donationAmount" data-satoshis="0">0 BCH (0.00 USD)</span>
+                </button>
+              </div>
+            </div>
+
+            <div id="donateSection" class="hidden col s12 m12">
+              <div class="col" style="background-color: white; border-radius: 0.25rem; border: 1px solid rgba(0, 0, 0, 0.31); padding-bottom: 1.5rem; padding-top: 0.75rem;">
+                <div class="col s12 m12 l12" style="margin-top: 0.75rem;">
+                  <div class="row" style="display: flex; flex-direction: column; justify-content: center; height: 10.50rem; padding: 1rem; margin: 0rem; margin-top: 0.5rem; border: 1px solid rgb(169, 169, 169); box-shadow: inset 0rem 0.10rem 0.25rem rgba(0, 0, 0, 0.13);">
+                    <div class="input-field col s12 m12 l12" style="">
+                      <i style="opacity: 0.50; font-size: 2.25rem; line-height: 2.25rem;" class="icon-person_outline prefix"></i>
+                      <input id="contributionName" type="text" maxlength="24">
+                      <label for="contributionName" data-string="usernameLabel">Name (optional)</label>
+                    </div>
+
+                    <div class="input-field col s12 m12 l12" style="">
+                      <i style="opacity: 0.50; font-size: 2.00rem; line-height: 2.50rem;" class="icon-chat_bubble_outline prefix"></i>
+                      <input id="contributionComment" type="text" maxlength="120">
+                      <label for="contributionComment" data-string="commentLabel">Comment (optional)</label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col s12 m12 l3" style="margin-top: 0.75rem;">
+                  <small style="display: inline-block; width: 100%; text-align: center;" data-string="copyLabel">1. Copy details</small>
+                  <textarea rows="5" id="template" name="template" style="height: 7rem; font-family: monospace; font-size: small; margin: 0; margin-top: 0.5rem; padding: 1rem; background-color: white;">ewAiAG8AdQB0AHAAdQB0AHMAIgA6AFsAewAiAHYAYQBsAHUAZQAiADoAMwA2ADAAMAAwADAAMAAwADAAMAAwACwAIgBhAGQAZAByAGUAcwBzACIAOgAiAGIAaQB0AGMAbwBpAG4AYwBhAHMAaAA6AHEAcAAwAHMAZwAzAGwANgA0ADIAcwB5ADAAZwB4AHMANgBoAGMAbQA0AHQAaABsAGMAeABxADYAZgBmADYAdAA2AGcAbABwAGQAMAB0ADYAZgB2ACIAfQBdACwAIgBkAGEAdABhACIAOgB7ACIAYQBsAGkAYQBzACIAOgAiACIALAAiAGMAbwBtAG0AZQBuAHQAIgA6ACIAIgB9ACwAIgBkAG8AbgBhAHQAaQBvAG4AIgA6AHsAIgBhAG0AbwB1AG4AdAAiADoAMAB9ACwAIgBlAHgAcABpAHIAZQBzACIAOgAxADUAOAA4ADkAOAAyADMAOQA5AH0A</textarea>
+                  <button id="copyTemplateButton" class="btn waves-effect waves-light green" style="width: 100%;" data-string="copyButton">Copy details</button>
+                </div>
+                <div class="col s12 m12 l6" style="margin-top: 0.75rem;">
+                  <small style="display: inline-block; width: 100%; text-align: center;" data-string="instructionsLabel">2. Prepare pledge</small>
+                  <p id="instructions" style="display: flex; justify-content: center; align-items: center; text-align: center; font-size: small; height: 7rem; padding: 1rem; margin-bottom: 7px; margin-top: 0.5rem; border: 1px solid rgb(169, 169, 169);" data-string="instructions">Install the plugin for the Electron-Cash desktop wallet and use the flipstarter tab to prepare your pledge.</p>
+                  <div style="display: flex; align-items: center; justify-content: space-evenly;">
+                    <a id="downloadButton" class="btn" style="display: flex; align-items: center; justify-content: flex-start; background-color: transparent; color: black; box-shadow: none;" href="https://gitlab.com/flipstarter/flipstarter-electron-cash/uploads/a34641f9863164e82a6ab72314a02311/flipstarter-1.2.zip">
+                      <i class="icon-download"></i>
+                      <span style="margin-left: 0.25rem;" data-string="downloadText">Download</span>
+                    </a>
+                    <a id="linkInstructionsButton" class="btn" target="_blank" style="display: flex; align-items: center; justify-content: flex-start; background-color: transparent; color: black; box-shadow: none;" href="https://read.cash/@flipstarter/how-to-support-a-flipstarter-campaign-f27240d9">
+                      <i class="icon-info"></i>
+                      <span style="margin-left: 0.25rem;" data-string="instructionLink">Instructions</span>
+                    </a>
+                  </div>
+                </div>
+                <div class="col s12 m12 l3" style="margin-top: 0.75rem;">
+                  <small style="display: inline-block; width: 100%; text-align: center;" data-string="commitLabel">3. Paste pledge</small>
+                  <textarea rows="5" id="commitment" name="commitment" data-placeholder="PasteHere" style="height: 7rem; font-family: monospace; font-size: small; margin: 0; margin-top: 0.5rem; padding: 1rem; background-color: white;" placeholder="Paste here"></textarea>
+                  <button id="commitTransaction" class="btn waves-effect waves-light green" style="width: 100%;" disabled="disabled" data-string="commitButton">Submit pledge</button>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Campaign details. -->
+          <section id="campaignDetails" class="row"><p>We are seeking $90k USD (currently 360 BCH) to cover:</p>
+            <ul>
+              <li>Six months of salary for one developer.</li>
+              <li>Hosting costs for our websites and public infrastructure.</li>
+              <li>Two part time developers building out the SLP index.</li>
+            </ul>
+            <p>The following is a line item of things that we will put the funding towards.</p>
+            <ul>
+              <li><p><strong>General Maintenance:</strong> The total lines of code across all BCHD repos is 300,018. Typically quoted maintenance costs are $1 USD per line of code per year [1], however we are asking for substantially less than this as we know community resources are at a premium and we believe we can accomplish this goal with less.</p>
+              </li>
+              <li><p><strong>Hosting:</strong> $500/month for bchd.greyh.at, testnet-bchd.greyh.at, ipfs.greyh.at, seed.bchd.cash, bchd.cash, and neutrino.cash.</p>
+              </li>
+              <li><p><strong>Network compatibility:</strong> Because this node is written in Go instead of C++ we cannot just cherrypick commits from Bitcoin-ABC to make the node compatible with each network upgrade. Instead we must write the hardfork code and compatibility tests from scratch. This is clearly the most challenging aspect of BCHD as mistakes can result in the node forking off the network.</p>
+              </li>
+            </ul>
+            <ul>
+              <li><p><strong>SLP Index:</strong> BCHD has a nicely designed interface for creating new blockchain indexes. We want to use this to create a new index for SLP transactions. This index will be turned off by default but can be enabled via the config options or command line. When enabled, the SLP data will be made available via the gRPC API. (See Issue #328 for more detail). $25k will be split between James Cramer and JT Freeman for work on this project.</p>
+              </li>
+              <li><p><strong>Mining Compatibility:</strong> Historically we haven’t focused on mining compatibility for BCHD but we’ve received increased requests to do so. The development of the mining template validator that Software Verde has proposed should eliminate most of the risk to miners running BCHD. We know we need to do more testing with P2Pool as there have been reported compatibility issues with it and BCHD. We will also need to implement some mempool changes, such as chained tx limits, so as to have mempool compatibility with other implementations and protect zeroconf transactions.</p>
+              </li>
+              <li><p>[Stretch goal] <strong>Release Neutrino Android Wallet:</strong> The Neutrino Android wallet has been in beta for about a year. There are still some known issues that are preventing us from taking it out of beta. We would like to get these issues resolved and do a formal first release.</p>
+              </li>
+              <li><p>[Stretch goal] <strong>Double Spend Proofs:</strong> Implement the double spend proof relaying protocol in BCHD and, if time allows, also implement double spend notifications as a gRPC and JSON-API service and make the bchwallet codebase consume these notifications and export them via its API.</p>
+              </li>
+            </ul>
+            <h2 id="progress-tracking">Progress Tracking</h2>
+            <p>Each of the above bullet points will be made into a Github Project in the gcash top level repo. Each project will be broken down into individual issues in the relevant repositories. The progress towards each project will be publically visible on github.</p>
+            <h2 id="detailed-description-of-each-repo">Detailed Description of Each Repo:</h2>
+            <ul>
+              <li><p><strong>bchd:</strong> See Abstract.</p>
+              </li>
+              <li><p><strong>bchwallet:</strong> Unlike most other full nodes, BCHD intentionally does not have built-in wallet functionality. This design decision makes the codebase more modular and easier to maintain. For wallet functionality we have a separate application called bchwallet which is basically a wallet daemon that can be used by application developers. Bchwallet has a pluggable chain backend architecture that can communicate with either bchd, bitcoind (ABC/BU etc), or Neutrino SPV. This daemon serves as the backend for the Neutrino Android Wallet (below) and is a great option for powering websites or point of sale software. It also has a gRPC API which can be used by applications.</p>
+              </li>
+              <li><p><strong>neutrino:</strong> This is the bchwallet backend plugin that enables the client-side filtering SPV mode in bchwallet.</p>
+              </li>
+              <li><p><strong>android-neturino:</strong> This is a Java based Android UI that wraps the bchwallet daemon, runs it in neutrino SPV mode, and communicates with it via the gRPC API.</p>
+              </li>
+              <li><p><strong>bchutil:</strong> Utility library for Bitcoin Cash written in Go. Contains libraries for addresses, transactions, bloom filters, gcs filters, merkle blocks, base58, base32, and bip32 keychains.</p>
+              </li>
+              <li><p><strong>meep:</strong> A popular Bitcoin Cash script debugger written in Go and using the BCHD script virtual machine.</p>
+              </li>
+              <li><p><strong>dnsseeder:</strong> A Bitcoin Cash network crawler and dns seeder written in Go. This is currently supporting seed.bchd.cash which I believe every other implementation has listed as a dns seed in their code. This may be the only seeder that supports service bit filtering out of the box. We use it to filter for nodes supporting NodeCF which the Neutrino wallet uses to connect to the network.</p>
+              </li>
+            </ul>
+            <p><em>- [1] Engelbertink, F.P. and Vogt, H.H. (2010) How to Save on Software Maintenance Costs. Omnext White Paper. Accessed 10 July 2013.</em></p>
+            <p>Alternate address to donate funds to that will be forwarded to flipstarter: <code>qq4je65ygaxqnrepjakden5cea0qc9ckcummgwr4lf</code>
+            </p>
+            <img alt="QR" src="img/bchd-qr.png">
+          </section>
+        </article>
+
+        <!-- Campaign sidebar -->
+        <aside class="col s12 m12 l4">
+          <section>
+            <h3 style="float: left;">
+              <span class="valign-wrapper" style="float: left;">
+                <i class="icon-face"></i>
+                <b id="campaignRecipientCount">1</b>
+                <span data-string="recipientsLabel">recipients</span>
+              </span>
+            </h3>
+            <hr>
+            <ul id="recipientList" class="row" style="margin-bottom: 3rem;"><li class="col s6 m6 l12">
+              <a href="https://bchd.cash/">
+                <img src="img/bchd-logo.png" alt="BCHD">
+                <span>
+                  <b>BCHD</b>
+                  <i>360 BCH</i>
+                </span>
+              </a>
+            </li></ul>
+          </section>
+
+          <section>
+            <h3 style="float: left;">
+              <span class="valign-wrapper" style="float: left;">
+                <i class="icon-favorite_border"></i>
+                <b id="campaignContributorCount">77</b>
+                <span data-string="contributorsLabel">contributors</span>
+              </span>
+            </h3>
+            <hr>
+            <ul id="contributionList"><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -6.11s; background-position: 0px 3.02rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">17%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Thomas J</b>
+                  <small class="contributionAmount">59.81 BCH</small>
+                </span>
+                <q class="contributionComment">It takes time to persuade men to do even what is for their own good.</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -13.41s; background-position: 0px 3.11rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">14%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Deng Xiao P</b>
+                  <small class="contributionAmount">50.10 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -5.66s; background-position: 0px 3.11rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">14%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">btcfork</b>
+                  <small class="contributionAmount">50.01 BCH</small>
+                </span>
+                <q class="contributionComment">Great project which inspires others in Bitcoin Cash</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -7.7s; background-position: 0px 3.26rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">10%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Blockchain.poker</b>
+                  <small class="contributionAmount">35.00 BCH</small>
+                </span>
+                <q class="contributionComment">Blockchain.poker is the world's best Bitcoin Cash Poker site!  Try today!</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -1.31s; background-position: 0px 3.35rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">7%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Local.bitcoin.com</b>
+                  <small class="contributionAmount">25.46 BCH</small>
+                </span>
+                <q class="contributionComment"> Local.bitcoin.com let's you buy or sell BCH with no KYC!!</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -5.45s; background-position: 0px 3.46rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">4%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">toorik</b>
+                  <small class="contributionAmount">14.90 BCH</small>
+                </span>
+                <q class="contributionComment">IFP is evil.</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -5.34s; background-position: 0px 3.48rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">3%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Prokhor Zakharov</b>
+                  <small class="contributionAmount">12.07 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -9.46s; background-position: 0px 3.5rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">3%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Leandro</b>
+                  <small class="contributionAmount">10.52 BCH</small>
+                </span>
+                <q class="contributionComment">Ad astra per aspera.</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -7.7s; background-position: 0px 3.5rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">3%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">emergent_reasons#100🌵</b>
+                  <small class="contributionAmount">10.33 BCH</small>
+                </span>
+                <q class="contributionComment">Satoshi incentivized the success of Bitcoin. Ultimately you must act on the incentives for its potential to be realized.</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -0.38s; background-position: 0px 3.5rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">3%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">imaginary_username</b>
+                  <small class="contributionAmount">10.08 BCH</small>
+                </span>
+                <q class="contributionComment">e pluribus unum</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -1.85s; background-position: 0px 3.5rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">3%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">scapy</b>
+                  <small class="contributionAmount">9.96 BCH</small>
+                </span>
+                <q class="contributionComment">bchd + neutrino are important</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -8.49s; background-position: 0px 3.56rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">1%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Cryptophyl.com</b>
+                  <small class="contributionAmount">4.22 BCH</small>
+                </span>
+                <q class="contributionComment">Go BCHD! If you pardon the pun :)</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -1.62s; background-position: 0px 3.56rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">1%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Fidel</b>
+                  <small class="contributionAmount">4.04 BCH</small>
+                </span>
+                <q class="contributionComment">Keep up the good work!</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -11.19s; background-position: 0px 3.56rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">1%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">FreeTrade</b>
+                  <small class="contributionAmount">3.66 BCH</small>
+                </span>
+                <q class="contributionComment">member.cash ❤️ BCHD</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -5.75s; background-position: 0px 3.57rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">1%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">chainxor</b>
+                  <small class="contributionAmount">3.05 BCH</small>
+                </span>
+                <q class="contributionComment">Hoping the best for the best full node! </q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -11s; background-position: 0px 3.57rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">1%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Sanctuary.The-One-Law</b>
+                  <small class="contributionAmount">3.03 BCH</small>
+                </span>
+                <q class="contributionComment">For those people Who Shall Not Harm, a currency sundered from tyranny.</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -3.31s; background-position: 0px 3.57rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">1%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Nwabudike Morgan</b>
+                  <small class="contributionAmount">2.90 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -13.3s; background-position: 0px 3.57rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">1%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Anonymous Peregrine</b>
+                  <small class="contributionAmount">2.82 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -5.26s; background-position: 0px 3.57rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">1%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias" style="opacity: 0.37;">Anonymous</b>
+                  <small class="contributionAmount">2.69 BCH</small>
+                </span>
+                <q class="contributionComment">Forward from campaign donation address</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -4.9s; background-position: 0px 3.57rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">1%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">ok it works</b>
+                  <small class="contributionAmount">2.64 BCH</small>
+                </span>
+                <q class="contributionComment">neutrino needs a UI fix tbh</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -5.58s; background-position: 0px 3.58rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">1%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Henry Cashlitt</b>
+                  <small class="contributionAmount">2.29 BCH</small>
+                </span>
+                <q class="contributionComment">Bitcoin Cash (BCH): Upgraded money for the world</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -11.78s; background-position: 0px 3.58rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">1%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">spicelord</b>
+                  <small class="contributionAmount">2.07 BCH</small>
+                </span>
+                <q class="contributionComment">bch is just base layer for spice, change my mind</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -3.6s; background-position: 0px 3.58rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">1%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">legal_username</b>
+                  <small class="contributionAmount">2.07 BCH</small>
+                </span>
+                <q class="contributionComment">nooo don't touch my tendierino</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -0.58s; background-position: 0px 3.58rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">1%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Spice Queen</b>
+                  <small class="contributionAmount">2.02 BCH</small>
+                </span>
+                <q class="contributionComment">ZQuest you were my 1st monumental friend in this space I wish you all the best of luck </q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -14.72s; background-position: 0px 3.58rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias" style="opacity: 0.37;">Anonymous</b>
+                  <small class="contributionAmount">1.68 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -0.01s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Eric Reid</b>
+                  <small class="contributionAmount">1.52 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -6.27s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">quest</b>
+                  <small class="contributionAmount">1.20 BCH</small>
+                </span>
+                <q class="contributionComment">BCHD funding is critical. Good luck Chris, James Cramer and JT!</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -0.22s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Jt Blockparty Freeman</b>
+                  <small class="contributionAmount">1.19 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -14.13s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">sploit#100 </b>
+                  <small class="contributionAmount">1.07 BCH</small>
+                </span>
+                <q class="contributionComment">Best indexing and RPC node on the block.</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -6.2s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Suzuki Subarashi</b>
+                  <small class="contributionAmount">1.02 BCH</small>
+                </span>
+                <q class="contributionComment">Go Dawgs</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -9.63s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Metallaxis</b>
+                  <small class="contributionAmount">1.02 BCH</small>
+                </span>
+                <q class="contributionComment">❤️ BCHD ❤️</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -6.14s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">stk</b>
+                  <small class="contributionAmount">1.01 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -12.11s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Rosco</b>
+                  <small class="contributionAmount">1.01 BCH</small>
+                </span>
+                <q class="contributionComment">BCHD is a great project</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -2.49s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias" style="opacity: 0.37;">Anonymous</b>
+                  <small class="contributionAmount">1.01 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -3.2s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias" style="opacity: 0.37;">Anonymous</b>
+                  <small class="contributionAmount">1.01 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -7.98s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">cryptopanda15</b>
+                  <small class="contributionAmount">1.01 BCH</small>
+                </span>
+                <q class="contributionComment">zquestz is among the best in BCH. OK, Chris is alright too, I guess. ;) Onward and upward!</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -13.5s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">BCH FTW</b>
+                  <small class="contributionAmount">1.00 BCH</small>
+                </span>
+                <q class="contributionComment">Let's get this fundraiser to completion!!</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -12.57s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">emergent_reasons#100🌵</b>
+                  <small class="contributionAmount">1.00 BCH</small>
+                </span>
+                <q class="contributionComment">FYI Large pledges will allow more people to participate by reducing the minimum.</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -3.37s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Bitcoin Cast</b>
+                  <small class="contributionAmount">1.00 BCH</small>
+                </span>
+                <q class="contributionComment">Upping previous pledge.  BCH Adoption extremist. gifts.bitcoin.com </q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -12.14s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">fast_badger</b>
+                  <small class="contributionAmount">1.00 BCH</small>
+                </span>
+                <q class="contributionComment">Best energy! Hope you guys get there</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -11.27s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Jonathan#100</b>
+                  <small class="contributionAmount">0.97 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -3.58s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">read.cash</b>
+                  <small class="contributionAmount">0.91 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -6.84s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias" style="opacity: 0.37;">Anonymous</b>
+                  <small class="contributionAmount">0.89 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -3.74s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">gm</b>
+                  <small class="contributionAmount">0.72 BCH</small>
+                </span>
+                <q class="contributionComment">for bchd</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -4.33s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Omar</b>
+                  <small class="contributionAmount">0.59 BCH</small>
+                </span>
+                <q class="contributionComment">Bitcoin Cash (BCH): best money for the world! Thank you all BCH developers for your hard work.</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -9.77s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias" style="opacity: 0.37;">Anonymous</b>
+                  <small class="contributionAmount">0.59 BCH</small>
+                </span>
+                <q class="contributionComment">BCH for the win ❤️</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -3.81s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Anonymous</b>
+                  <small class="contributionAmount">0.58 BCH</small>
+                </span>
+                <q class="contributionComment">Thank you Josh, Chris and the rest of BCHD team for bringing innovation to BCH. </q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -12.33s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Bitcoin Cast</b>
+                  <small class="contributionAmount">0.56 BCH</small>
+                </span>
+                <q class="contributionComment">BCH Adoption FTW!  gifts.bitcoin.com</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -9.82s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Sur_Clyde_Hoffenfelder</b>
+                  <small class="contributionAmount">0.53 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -12.27s; background-position: 0px 3.59rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias" style="opacity: 0.37;">Anonymous</b>
+                  <small class="contributionAmount">0.52 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -8.5s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Weed money</b>
+                  <small class="contributionAmount">0.51 BCH</small>
+                </span>
+                <q class="contributionComment">Hope other fish donate!</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -10.76s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">lugaxker</b>
+                  <small class="contributionAmount">0.51 BCH</small>
+                </span>
+                <q class="contributionComment">https://viresinnumeris.fr</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -0.53s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias" style="opacity: 0.37;">Anonymous</b>
+                  <small class="contributionAmount">0.51 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -6.95s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Steve2048</b>
+                  <small class="contributionAmount">0.51 BCH</small>
+                </span>
+                <q class="contributionComment">Thanks to the BCH community! Let's make a currency for the world!</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -11.89s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias" style="opacity: 0.37;">Anonymous</b>
+                  <small class="contributionAmount">0.50 BCH</small>
+                </span>
+                <q class="contributionComment">separation of money and state</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -9.25s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Richard Brady</b>
+                  <small class="contributionAmount">0.50 BCH</small>
+                </span>
+                <q class="contributionComment">Keep up the good work.</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -3.81s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias" style="opacity: 0.37;">Anonymous</b>
+                  <small class="contributionAmount">0.50 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -10.61s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">dagurval</b>
+                  <small class="contributionAmount">0.50 BCH</small>
+                </span>
+                <q class="contributionComment">Keep innovating 🤓</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -7.09s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">pelasgian</b>
+                  <small class="contributionAmount">0.49 BCH</small>
+                </span>
+                <q class="contributionComment">Supporting economic freedom for the world</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -4.2s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Nate</b>
+                  <small class="contributionAmount">0.48 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -13.82s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias" style="opacity: 0.37;">Anonymous</b>
+                  <small class="contributionAmount">0.43 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -5.63s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Lopokoko</b>
+                  <small class="contributionAmount">0.42 BCH</small>
+                </span>
+                <q class="contributionComment">P2P Electronic Cash for the world!</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -10.48s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias" style="opacity: 0.37;">Anonymous</b>
+                  <small class="contributionAmount">0.41 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -6.77s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Collin</b>
+                  <small class="contributionAmount">0.40 BCH</small>
+                </span>
+                <q class="contributionComment">BCHD ftw</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -6.72s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Jonas</b>
+                  <small class="contributionAmount">0.37 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -5.51s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Alexandria Ocasio-Cortez</b>
+                  <small class="contributionAmount">0.35 BCH</small>
+                </span>
+                <q class="contributionComment">You don’t have to be perfect, but you do have to be 100% committed.</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -12.87s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">spice_trader#44148</b>
+                  <small class="contributionAmount">0.33 BCH</small>
+                </span>
+                <q class="contributionComment">Keep up the stellar work!</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -3.18s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias" style="opacity: 0.37;">Anonymous</b>
+                  <small class="contributionAmount">0.33 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -8.25s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">BitcoinOutLoud</b>
+                  <small class="contributionAmount">0.31 BCH</small>
+                </span>
+                <q class="contributionComment">Node diversity FTW!!!</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -10.83s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias" style="opacity: 0.37;">Anonymous</b>
+                  <small class="contributionAmount">0.31 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -12.46s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Lopokoko</b>
+                  <small class="contributionAmount">0.30 BCH</small>
+                </span>
+                <q class="contributionComment">P2P Electronic Cash for the world!</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -4.81s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">uc#105</b>
+                  <small class="contributionAmount">0.25 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -6.65s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">n00b</b>
+                  <small class="contributionAmount">0.18 BCH</small>
+                </span>
+                <q class="contributionComment">...booze money for June;(</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -2.08s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Weipin Xia</b>
+                  <small class="contributionAmount">0.17 BCH</small>
+                </span>
+                <q class="contributionComment" style="display: none;"></q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -7.09s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Super Hexagon</b>
+                  <small class="contributionAmount">0.02 BCH</small>
+                </span>
+                <q class="contributionComment">Ok fine I'll skip breakfast for today</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -13.67s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">Marwa</b>
+                  <small class="contributionAmount">0.01 BCH</small>
+                </span>
+                <q class="contributionComment">Bitcoin Cash is the best</q>
+              </span>
+            </li><li>
+              <div>
+                <div class="contributionWaves" style="animation-delay: -4.68s; background-position: 0px 3.6rem;"></div>
+                <div class="contributionDisplay"></div>
+                <span class="contributionPercent">0%</span>
+              </div>
+              <span>
+                <span>
+                  <b class="contributionAlias">عمر</b>
+                  <small class="contributionAmount">0.01 BCH</small>
+                </span>
+                <q class="contributionComment">thank you BCH developers!</q>
+              </span>
+            </li></ul>
+          </section>
+        </aside>
+      </main>
+
+    </div>
+  </div>
+
+  <!-- Site footer -->
+  <footer class="page-footer green">
+    <div class="container">
+      <div class="row">
+        <div class="col l5 s12">
+          <h5 class="white-text" data-string="footerLabel">About us</h5>
+          <p class="grey-text text-lighten-4" data-string="footerText">We are a group of volunteers who think that it is important to establish effective and sustainable methods for voluntary funding. Flipstarter is an example of how to raise funds non-custodially with minimal trust.</p>
+        </div>
+        <div class="col l2 m4 s4 offset-l1">
+          <h5 class="white-text" data-string="socialLabel">Social</h5>
+          <ul>
+            <li>
+              <a class="white-text valign-wrapper" href="https://twitter.com/flipstartercash">
+                <i class="icon-chat"></i>
+                &nbsp;
+                <span data-string="twitter">Twitter</span>
+              </a>
+            </li>
+            <li>
+              <a class="white-text valign-wrapper" href="https://read.cash/@flipstarter">
+                <i class="icon-info"></i>
+                &nbsp;
+                <span data-string="read.cash">Read.cash</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col l2 m4 s4">
+          <h5 class="white-text" data-string="contactLabel">Contact</h5>
+          <ul>
+            <li>
+              <a class="white-text valign-wrapper" href="mailto:info@flipstarter.cash">
+                <i class="icon-email"></i>
+                &nbsp;
+                <span data-string="email">Email</span>
+              </a>
+            </li>
+            <li>
+              <a class="white-text valign-wrapper" href="mailto:security@flipstarter.cash">
+                <i class="icon-security"></i>
+                &nbsp;
+                <span data-string="security">Security</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="col l2 m4 s4">
+          <h5 class="white-text" data-string="codeLabel">Code</h5>
+          <ul>
+            <li>
+              <a class="white-text valign-wrapper" href="https://gitlab.com/groups/flipstarter/-/issues">
+                <i class="icon-report_problem"></i>
+                &nbsp;
+                <span data-string="issues">Issues</span>
+              </a>
+            </li>
+            <li>
+              <a class="white-text valign-wrapper" href="https://gitlab.com/flipstarter">
+                <i class="icon-code"></i>
+                &nbsp;
+                <span data-string="source">Source code</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-copyright">
+      <div class="container center" style="opacity: 0.65;">
+        <span data-string="copyright">Website and assets are copyrighted in 2020 by the respective authors, licensed for public use under the</span>
+        <a href="https://gitlab.com/emergent-reasons/funding-traction/blob/master/LICENSE" style="color: inherit; border-bottom: 1px dashed rgba(256, 256, 256, 0.33)" data-string="license">MIT license.</a>
+      </div>
+    </div>
+  </footer>
+
+  <div id="languageSelector" class="fixed-action-btn">
+    <b id="currentLanguage" data-string="changeLanguage">
+      <a href="/">🇬🇧</a>
+      <a href="/zh">🇨🇳</a>
+      <a href="/es">🇪🇸</a>
+    </b>
+  </div>
+
+  <!-- -->
+  <template id="recipientTemplate">
+    <li class="col s6 m6 l12">
+      <a>
+        <img>
+        <span>
+          <b></b>
+          <i></i>
+        </span>
+      </a>
+    </li>
+  </template>
+  <template id="contributionTemplate">
+    <li>
+      <div>
+        <div class="contributionWaves"></div>
+        <div class="contributionDisplay"></div>
+        <span class="contributionPercent"></span>
+      </div>
+      <span>
+        <span>
+          <b class="contributionAlias"></b>
+          <small class="contributionAmount"></small>
+        </span>
+        <q class="contributionComment"></q>
+      </span>
+    </li>
+  </template>
+  <template id="emptyContributionMessage">
+    <li style="display: block; text-align: center; color: rgba(0, 0, 0, 0.5); padding: 2rem;">
+      <i data-string="contributorEmpty1">No one has made a pledge yet.</i>
+      <br>
+      <i data-string="contributorEmpty2">You could be the first.</i>
+    </li>
+  </template>
+
+  <!-- Load the javascript as the last step to ensure fastest load time. -->
+  <script src="js/application.js"></script>
+
+  <!-- -->
+  <audio src="snd/applause.mp3" id="applause"></audio>
+
+
+</body>
+</html>
