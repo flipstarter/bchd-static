@@ -6,7 +6,7 @@
 @media only screen and (min-width: 2000px) { html { font-size: 17.0px; } }
 
 .icon-block {
-  padding: 0 15px;
+	padding: 0 15px;
 }
 .icon-block .material-icons {
 	font-size: inherit;
@@ -15,6 +15,11 @@
 .progress
 {
 	height: 0.25rem !important;
+}
+
+strong
+{
+	font-weight: bold;
 }
 
 /* Disable materialize-css junk. */
@@ -131,7 +136,7 @@ hr
 	text-transform: uppercase;
 	font-weight: bold;
 	margin-top: 1.25rem;
-	margin-bottom: 0;
+	margin-bottom: 0.75rem;
 }
 
 #campaign h1
@@ -149,12 +154,13 @@ hr
 
 #campaign h3
 {
-	font-size: 0.75rem;
-	color: rgba(0, 0, 0, 0.60);
+	font-size: 0.85rem;
+	color: rgba(0, 0, 0, 0.65);
 }
 
 #campaign p
 {
+	display: inline-block;
 	font-size: 1.00rem;
 	color: rgba(0, 0, 0, 0.70);
 }
@@ -162,16 +168,55 @@ hr
 #campaign ul,
 #campaign ol
 {
+	list-style: none;
+	counter-reset: li;
 	margin-left: 0rem;
+	padding-left: 3rem;
 }
 
-#campaign ul > li,
+#campaign ol > li::before,
+#campaign ul > li::before
+{
+	color: rgba(0, 0, 0, 0.50);
+	display: inline-block;
+	font-weight: bold;
+
+	width: 2rem;
+	margin-left: -2rem;
+	padding-right: 1rem;
+	vertical-align: top;
+	text-align: right;
+}
+
+#campaign ol > li::before
+{
+	content: counter(li);
+}
+
+#campaign ul > li::before
+{
+	content: '-';
+}
+
 #campaign ol > li
+{
+	counter-increment: li;
+}
+
+#campaign ul > li
 {
 	color: rgba(0, 0, 0, 0.70);
 	font-size: 1rem;
-	list-style-type: disc;
-	list-style-position: inside;
+}
+
+#campaign li:last-child
+{
+	margin-bottom: 1rem;
+}
+
+#campaign li p
+{
+	margin-block-start: 0em;
 }
 
 #recipientList
@@ -202,7 +247,7 @@ hr
 #recipientList > li > a > span
 {
 	position: absolute;
-	bottom: 0;
+	/* bottom: 0; */
 	left: 0;
 	width: 100%;
 	height: 3rem;
@@ -521,10 +566,10 @@ input[type=range]::-moz-range-thumb
 	letter-spacing: 0.13rem;
 	padding-right: 1.25rem;
 	text-shadow:
-		-0.05rem -0.05rem 0 rgba(0, 0, 0, 0.65),
-		0.05rem -0.05rem 0 rgba(0, 0, 0, 0.65),
-		-0.05rem 0.05rem 0 rgba(0, 0, 0, 0.65),
-		0.05rem 0.05rem 0 rgba(0, 0, 0, 0.65);
+	-0.05rem -0.05rem 0 rgba(0, 0, 0, 0.65),
+	0.05rem -0.05rem 0 rgba(0, 0, 0, 0.65),
+	-0.05rem 0.05rem 0 rgba(0, 0, 0, 0.65),
+	0.05rem 0.05rem 0 rgba(0, 0, 0, 0.65);
 }
 
 #header > h1 > span
@@ -583,8 +628,8 @@ main
 #overview #campaignContributionBar
 {
 	height: 0.25rem;
-	background-color: khaki;
 	transition: left 0.75s ease-in-out;
+	background-color: gold;
 }
 
 /* Campaign form */
@@ -611,6 +656,12 @@ fieldset > .input-field
 {
 	margin-bottom: 0;
 	padding-bottom: 0;
+}
+
+#campaignAbstract img,
+#campaignDetails img
+{
+	width: 100%;
 }
 
 /* Campaign sidebase */
@@ -661,8 +712,8 @@ aside > section > h3
 	vertical-align: middle;
 
 	text-shadow: 0px 0px 7px white,
-	             0px 0px 5px white,
-	             0px 0px 3px white,
-	             0px 0px 2px white,
-	             0px 0px 1px white;
+	0px 0px 5px white,
+	0px 0px 3px white,
+	0px 0px 2px white,
+	0px 0px 1px white;
 }
